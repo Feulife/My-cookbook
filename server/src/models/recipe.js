@@ -6,7 +6,10 @@ const recipeSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-
+    ingradient: {
+      type: String,
+      require: true
+    },
     favoriteCount: {
       type: Number,
       default: 0

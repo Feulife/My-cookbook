@@ -25,7 +25,7 @@ const mutation = {
         _id: id
       },
       {
-        $set: {
+        set: {
           content
         }
       },

@@ -1,6 +1,7 @@
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
-import { GET_RECIPE, EDIT_RECIPE } from "../gql/query";
+import { GET_RECIPE } from "../gql/query";
+import { EDIT_RECIPE } from "../gql/mutation";
 
 export default function EditRecipe({ recipe }) {
   const [isEditing, setIsEditing] = useState(false);

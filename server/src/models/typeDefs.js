@@ -6,6 +6,7 @@ export const typeDefs = gql`
   type Recipe {
     id: ID!
     content: String!
+    ingradient: String!
     FavoriteCount: Int!
     createdAt: DateTime!
     updatedAt: DateTime!
@@ -20,7 +21,7 @@ export const typeDefs = gql`
   type Query {
     recipes: [Recipe!]!
     recipe(id: ID): Recipe!
-    RecipeFeed(cursor: String): RecipeFeed
+    recipeFeed(cursor: String): RecipeFeed
   }
 
   type Mutation {
