@@ -1,9 +1,9 @@
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
-// import { GET_RECIPE } from "../gql/query";
-import { GET_RECIPES } from "../gql/query";
-import { DELETE_RECIPE } from '../gql/mutation.js'
-import { EDIT_RECIPE } from "../gql/mutation";
+// import { GET_RECIPES } from "../gql/query";
+// import { DELETE_RECIPE } from '../gql/mutation.js'
+// import { EDIT_RECIPE } from "../gql/mutation";
+import { GET_RECIPES, EDIT_RECIPE, DELETE_RECIPE } from "../graphql";
 
 export default function Recipe({recipe}) {
 const [deleteRecipeMutation] = useMutation(DELETE_RECIPE, {

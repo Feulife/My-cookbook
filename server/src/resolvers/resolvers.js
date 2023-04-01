@@ -5,5 +5,5 @@ import { DateTimeScalar } from 'graphql-date-scalars'
 export const resolvers = {
   Query,
   Mutation,
-  DateTime: DateTimeScalar
+  // DateTime: DateTimeScalar
 }

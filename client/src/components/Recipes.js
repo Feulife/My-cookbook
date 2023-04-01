@@ -1,6 +1,7 @@
 import { useQuery } from "@apollo/client";
 import Recipe from './Recipe.js'
-import { GET_RECIPES } from "../gql/query";
+import { GET_RECIPES } from '../graphql.js';
+// import { GET_RECIPES } from "../gql/query";
 
 export default function Recipes() {
   const{data, loading, error} = useQuery(GET_RECIPES)

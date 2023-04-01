@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { GET_RECIPES } from "../gql/query";
 import { NEW_RECIPE } from "../gql/mutation";
+// import { DateTimeScalar } from 'graphql-date-scalars'
+const showDate = new Date().toLocaleDateString()
 
 export default function CreateRecipe() {
   const [title, setTitle] = useState("");
@@ -62,7 +64,7 @@ export default function CreateRecipe() {
           onChange={(e) => setContent(e.target.value)}
         />
       </div>
-      <input type="submit" value="create" className="btn btn-primary" onChange={() => setCreatedAt()} />
+      <input type="submit" value="create" className="btn btn-primary" onChange={() => setCreatedAt(showDate)} />
     </form>
   );
 }

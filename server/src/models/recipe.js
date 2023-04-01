@@ -13,11 +13,16 @@ const recipeSchema = new mongoose.Schema(
     content: {
       type: String,
       required: true
-    }    
+    },
+    createdAt: {
+      type: String,
+      required: true
+    },
+    updatedAt: {
+      type: String,
+      required: true
+    }
   },
-  {
-    timestemps: true
-  }
 )
 
 const Recipe = mongoose.model('sample_cookbook', recipeSchema)
