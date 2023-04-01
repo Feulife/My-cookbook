@@ -2,23 +2,46 @@ import mongoose from 'mongoose'
 
 const recipeSchema = new mongoose.Schema(
   {
-    content: {
+    title: {
       type: String,
       required: true
     },
-    ingradient: {
+    ingredient: {
       type: String,
-      require: true
+      required: true
     },
-    favoriteCount: {
-      type: Number,
-      default: 0
-    },
+    content: {
+      type: String,
+      required: true
+    }    
   },
   {
-    timestamps: true
-  },
+    timestemps: true
+  }
 )
 
-const Recipe = mongoose.model('Recipe', recipeSchema)
-export default Recipe
+const Recipe = mongoose.model('sample_cookbook', recipeSchema)
+export default Recipe;
+
+// const recipeSchema = new mongoose.Schema(
+//   {
+//     content: {
+//       type: String,
+//       required: true
+//     },
+//     ingredient: {
+//       type: String,
+//       require: true
+//     },
+//     favoriteCount: {
+//       type: Number,
+//       default: 0
+//     },
+//   },
+//   {
+//     timestamps: true
+//   },
+// )
+
+// const Recipe = mongoose.model('Recipe', recipeSchema)
+// export default Recipe

@@ -3,31 +3,22 @@ import gql from 'graphql-tag'
 export const typeDefs = gql`
   scalar DateTime
 
+  type Query {
+    recipes: [Recipe!]!    
+  }
+
   type Recipe {
     id: ID!
+    title: String!
+    ingredient: String!
     content: String!
-    ingradient: String!
-    FavoriteCount: Int!
     createdAt: DateTime!
     updatedAt: DateTime!
-  }
-
-  type RecipeFeed {
-    recipes: [Recipe]!
-    cursor: String!
-    hasNextPage: Boolean!
-  }
-
-  type Query {
-    recipes: [Recipe!]!
-    recipe(id: ID): Recipe!
-    recipeFeed(cursor: String): RecipeFeed
-  }
+  } 
 
   type Mutation {
-    newRecipe(content: String): Recipe
-    updateRecipe(id: ID!, content: String!): Recipe!
+    createRecipe(title: String, ingredient: String, content: String, createdAt: DateTime): Recipe
+    editRecipe(id: ID!, title: String!, ingredient: String! content: String!, updatedAt: DateTime!): Recipe!
     deleteRecipe(id: ID): Recipe!
-    toggleFavorite(id: ID!): Recipe!    
   }
 `

@@ -2,7 +2,7 @@ import { ApolloServer } from '@apollo/server'
 import { startStandaloneServer } from '@apollo/server/standalone'
 import { typeDefs } from './models/typeDefs.js'
 import { resolvers } from './resolvers/resolvers.js'
-import { models } from './models/cookBook.js'
+// import { models } from './models/cookBook.js'
 import mongoose from 'mongoose'
 import * as dotenv from 'dotenv'
 
@@ -12,9 +12,9 @@ console.log(Db);
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: async () => {
-    return { models }
-  },
+  // context: async () => {
+  //   return { models }
+  // },
 })
 
 const db = await mongoose.connect('mongodb+srv://Feulife:Jardin7FeuLife@cluster0.1vxismk.mongodb.net/cookbook?w=majority')

@@ -1,25 +1,25 @@
 import { gql } from "@apollo/client";
 export const GET_RECIPES = gql`
-  query recipeFeed($cursor: String) {
-    recipeFeed(cursor: $cursor) {
-      cursor
-      hasNextPage
-      recipes {
-        id
-        createdAt
-        content
-        favoriteCount
-      }
+  query Query {
+    recipes {
+      id
+      title
+      ingredient
+      content
+      createdAt
+      updatedAt
     }
   }
 `;
 export const GET_RECIPE = gql`
-  query recipe($id: ID!) {
+  query Recipe($id: ID!) {
     recipe(id: $id) {
       id
-      createdAt
+      title
+      ingredient
       content
-      favoriteCount
+      createdAt
+      updatedAt
     }
   }
 `;

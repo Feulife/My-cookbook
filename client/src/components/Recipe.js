@@ -1,14 +1,31 @@
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
-import { GET_RECIPE } from "../gql/query";
+// import { GET_RECIPE } from "../gql/query";
+import { GET_RECIPES } from "../gql/query";
+import { DELETE_RECIPE } from '../gql/mutation.js'
 import { EDIT_RECIPE } from "../gql/mutation";
 
-export default function EditRecipe({ recipe }) {
+export default function Recipe({recipe}) {
+const [deleteRecipeMutation] = useMutation(DELETE_RECIPE, {
+    refetchQueries: [
+      {query: GET_RECIPES},
+    ]
+  })
+
+  const deleteRecipe = () => {
+    deleteRecipeMutation({
+      variables: {
+        id: recipe.id,
+      }
+    })
+  }
+
   const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState(recipe.title);
-  const [ingradient, setIngradient] = useState(recipe.ingradient);
+  const [ingredient, setIngredient] = useState(recipe.ingredient);
+  const [content, setContent] = useState(recipe.content)
   const [editRecipe] = useMutation(EDIT_RECIPE, {
-    refetchQueries: [{ query: GET_RECIPE }],
+    refetchQueries: [{ query: GET_RECIPES }],
   });
 
   const saveChanges = () => {
@@ -16,7 +33,8 @@ export default function EditRecipe({ recipe }) {
       variables: {
         id: recipe.id,
         title: recipe.title,
-        ingradient: recipe.ingradient,
+        ingradient: recipe.ingredient,
+        content: recipe.content
       },
     });
     setIsEditing(false);
@@ -25,7 +43,8 @@ export default function EditRecipe({ recipe }) {
   const discardChanges = () => {
     setIsEditing(false);
     setTitle(recipe.title);
-    setIngradient(recipe.ingradient);
+    setIngredient(recipe.ingredient);
+    setContent(recipe.content)
   };
 
   return (
@@ -45,11 +64,21 @@ export default function EditRecipe({ recipe }) {
       <td>
         {isEditing
         ? <input type='text'
-        value={ingradient}
-        onChange={e => setIngradient(e.target.value)}
+        value={ingredient}
+        onChange={e => setIngredient(e.target.value)}
         className='form-control'
         />
-        : recipe.ingradient
+        : recipe.ingredient
+      }
+      </td>
+      <td>
+        {isEditing
+        ? <input type='text'
+        value={content}
+        onChange={e => setContent(e.target.value)}
+        className='form-control'
+        />
+        : recipe.content
       }
       </td>
       <td>
@@ -65,7 +94,10 @@ export default function EditRecipe({ recipe }) {
         : <>
           <button className='btn btn-info mr-2' onClick={() => setIsEditing(true)}>
             Edit
-          </button>
+          </button>          
+          <button className='btn btn-danger' onClick={deleteRecipe}>
+            Delete
+          </button>      
         </>
         }
       </td>

@@ -1,38 +1,31 @@
 import { gql } from "@apollo/client"
 
 export const NEW_RECIPE = gql`
-  mutation newRecipe($content: $content) {
-    newRecipe(content: $content) {
+  mutation Mutation($title: String, $ingredient: String, $content: content, $createdAt: String) {
+    createRecipe(title: $title, ingredient: $ingredient, content: $content, createdAt: $createdAt) {
       id
+      title
+      ingredient
       content
-      createdAt
-      favoriteCount
+      createdAt      
     }
   }
 `
 
 export const EDIT_RECIPE = gql`
-  mutation updateRecipe($id: ID!, $content: String!) {
-    updateRecipe(id: $id, content: $content) {
+  mutation Mutation($id: ID, $title: String!, $ingredient: String!, $content: String!, $updatedAt: String!) {
+    editRecipe(id: $id, title: $title, ingredient: $ingredient, content: $content, updatedAt: $updatedAt) {
       id
+      title
+      ingredient
       content
-      createdAt
-      favoriteCount
+      updatedAt
     }
   }
 `
 
 export const DELETE_RECIPE = gql`
-  mutation deleteRecipe($id: ID!) {
+  mutation Mutation($id: ID!) {
     deleteRecipe(id: $id)
-  }
-`
-
-export const TOGGLE_FAVORITE = gql`
-  mutation toggleFavorite($id: ID!) {
-    toggleFavorite(id: $id) {
-      id
-      favoriteCount
-    }
   }
 `

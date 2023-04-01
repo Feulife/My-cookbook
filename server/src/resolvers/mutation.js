@@ -1,38 +1,35 @@
-import mongoose from "mongoose"
+import Recipe from '../models/recipe.js'
 
 const mutation = {
-  newRecipe: async (parent, args, { models }) => {
-    return await Recipe.create({
-      content: args.content,
-      favoriteCount: 0
-    })
+  createRecipe: async (_, { title, ingredient, content, createdAt }) => {
+    const newRecipe = new Recipe({title, ingredient, content, createdAt})
+      await newRecipe.save()
+      return newRecipe
   },
 
-  deleteRecipe: async (parent, { id }, { models }) => {
-    const recipe = await Recipe.findById(id)
-
-    try {
-      await recipe.remove()
-      return true
-    } catch (err) {
-      return false
+  deleteRecipe: async (_, { id }) => {
+    const result = await Recipe.deleteOne({_id: id})
+    if (result.acknowledged && result.deletedCount == 1) {
+      return id
     }
+    return null
   },
-  updateRecipe: async (parent, { content, id }, { models }) => {
-    const recipe = await Recipe.findById(id)
-    return await Recipe.findOneAndUpdate(
+
+  editRecipe: async (_, { id, title, ingredient, content, updetedAt}) => {
+    const result = await Recipe.updateOne(    
       {
         _id: id
       },
       {
         set: {
-          content
+          title, ingredient, content, updetedAt
         }
-      },
-      {
-        new: true
-      }
+      },      
     )
+    if (result.acknowledged && result.modifiedCount == 1) {
+      return await Recipe.findOne({_id: id})
+    }
+    return null
   }
 }
 
