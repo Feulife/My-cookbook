@@ -1,28 +1,19 @@
-import { ApolloServer } from '@apollo/server'
-import { startStandaloneServer } from '@apollo/server/standalone'
-import { typeDefs } from './models/typeDefs.js'
-import { resolvers } from './resolvers/resolvers.js'
-// import { models } from './models/cookBook.js'
-import mongoose from 'mongoose'
-import * as dotenv from 'dotenv'
+import {ApolloServer} from '@apollo/server';
+import {startStandaloneServer} from '@apollo/server/standalone';
+import {typeDefs} from './models/typeDefs.js';
+import {resolvers} from './resolvers.js';
+import mongoose from 'mongoose';
 
-dotenv.config({ path: "./.env" })
-const Db = process.env.ATLAS_URI
-console.log(Db);
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-  // context: async () => {
-  //   return { models }
-  // },
-})
+const db = await mongoose.connect('mongodb+srv://Feulife:Jardin7FeuLife@cluster0.1vxismk.mongodb.net/cookbook?retryWrites=true&w=majority');
 
-const db = await mongoose.connect('mongodb+srv://Feulife:Jardin7FeuLife@cluster0.1vxismk.mongodb.net/cookbook?w=majority')
-console.info('📚 Connected to db', db?.connections?._connectionString);
+console.info('Connected to db', db?.connections[0]?._connectionString);
+
+const server = new ApolloServer({typeDefs, resolvers});
 
 const { url } = await startStandaloneServer(server, {
-  listen: {
-    port: 5000,
-  },
-})
+    listen: {
+        port: 4000,
+    },
+});
+
 console.info(`🚀 Server ready at ${url}`);

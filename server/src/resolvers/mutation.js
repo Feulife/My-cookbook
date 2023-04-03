@@ -21,10 +21,10 @@ const mutation = {
         _id: id
       },
       {
-        set: {
+        $set: {
           title, ingredient, content, updetedAt
         }
-      },      
+      }  
     )
     if (result.acknowledged && result.modifiedCount == 1) {
       return await Recipe.findOne({_id: id})
