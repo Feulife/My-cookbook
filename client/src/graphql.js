@@ -13,6 +13,15 @@ export const RECIPES_QUERY = gql`
     }
 `;
 
+export const TITLES_QUERY = gql`
+  query Query {
+    recipes {
+      id
+      title
+    }
+  }
+`
+
 export const CREATE_RECIPE_MUTATION = gql`
     mutation Mutation($title: String, $ingredient: String, $content: String, $createdAt: String) {
         create(title: $title, ingredient: $ingredient, content: $content, createdAt: $createdAt) {

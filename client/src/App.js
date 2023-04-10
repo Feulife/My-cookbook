@@ -1,6 +1,7 @@
 import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
 import Hello from './components/Hello';
-import Recipes from './components/Recipes';
+import Titles from './components/Titles'
+// import Recipes from './components/Recipes';
 import CreateRecipe from './components/CreateRecipe';
 import { Link, BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -23,7 +24,7 @@ function App() {
         <div className="container mt-5">
           <Routes>
             <Route path="/" element={<Hello />} />
-            <Route path="/recipes" element={<Recipes />} />
+            <Route path="/recipes" element={<Titles />} />
             <Route path="/create" element={<CreateRecipe />} />
           </Routes>
         </div>
