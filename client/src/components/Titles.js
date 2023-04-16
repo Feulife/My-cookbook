@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
 import Title from "./Title";
 import { TITLES_QUERY } from "../graphql";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 export default function Recipes() {
   const { data, loading, error } = useQuery(TITLES_QUERY);
@@ -11,36 +11,32 @@ export default function Recipes() {
   }
 
   return (
-    <BrowserRouter>
-      <div>
-        <table className="table">
-          <thead className="thead-dark">
+    <div>
+      <table className="table">
+        <thead className="thead-dark">
+          <tr>
+            <th>Title</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {loading && <tr></tr>}
+          {error && (
             <tr>
-              <th>Title</th>
-              <th></th>
+              <td>Loading...</td>
+              <td>Check console for error logs...</td>
             </tr>
-          </thead>
-          <tbody>
-            <Routes>
-              {loading && (
-                <tr>
-                  <td>Loading...</td>
-                </tr>
-              )}
-              {error && (
-                <tr>
-                  <td>Check console for error logs...</td>
-                </tr>
-              )}
-              {!loading &&
-                !error &&
-                data?.recipes.map((recipe) => (
-                  <Route element={<Title recipe={recipe} key={recipe.id} />} />
-                ))}
-            </Routes>
-          </tbody>
-        </table>
-      </div>
-    </BrowserRouter>
+          )}
+          {!loading &&
+            !error &&
+            data?.recipes.map((recipe) => (
+              <Title recipe={recipe} key={recipe.id} />
+              // <Routes>
+              //   <Route element={<Title recipe={recipe} key={recipe.id} />} />
+              // </Routes>
+            ))}
+        </tbody>
+      </table>
+    </div>
   );
 }

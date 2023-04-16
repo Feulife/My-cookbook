@@ -14,17 +14,17 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <BrowserRouter>
-        <nav className="navbar navbar-dark bg-dark">
+        <nav className="navbar navbar-custom">
           <div className="navbar-nav mr-auto flex-row">
             <Link to="/" className="nav-link mr-2">Home</Link>
-            <Link to="/recipes" className="nav-link mr-2">Recipes</Link>
+            <Link to="/recipes//" className="nav-link mr-2">Recipes</Link>
             <Link to="/create" className="nav-link mr-2">Create Recipe</Link>
           </div>
         </nav>
         <div className="container mt-5">
           <Routes>
             <Route path="/" element={<Hello />} />
-            <Route path="/recipes" element={<Titles />} />
+            <Route path="/recipes//" element={<Titles />} />
             <Route path="/create" element={<CreateRecipe />} />
           </Routes>
         </div>
