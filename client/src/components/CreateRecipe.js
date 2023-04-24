@@ -64,6 +64,6 @@ export default function CreateRecipe() {
           onChange={(e) => setContent(e.target.value)}
         />
       </div>
-        <input type="submit" value="Create" className="btn btn-primary" onChange={() => setCreatedAt(showDate)} />
+        <input type="submit" value="Create" className="btn btn-primary" onClick={() => setCreatedAt(showDate)} />
     </form>;
 }

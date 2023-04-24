@@ -30,10 +30,10 @@ export default function Recipes() {
           {!loading &&
             !error &&
             data?.recipes.map((recipe) => (
-              <Title recipe={recipe} key={recipe.id} />
-              // <Routes>
-              //   <Route element={<Title recipe={recipe} key={recipe.id} />} />
-              // </Routes>
+              <tr key={recipe.id}>
+              <Title recipe={recipe} />
+              {recipe.createdAt}
+              </tr>
             ))}
         </tbody>
       </table>

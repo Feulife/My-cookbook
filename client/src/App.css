@@ -34,6 +34,10 @@ html {
   color: green;
 }
 
+.App-link:hover{
+  text-underline-offset: 2px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
