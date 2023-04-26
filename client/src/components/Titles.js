@@ -1,5 +1,6 @@
 import { useQuery } from "@apollo/client";
 import Title from "./Title";
+import Recipe from "./Recipe";
 import { TITLES_QUERY } from "../graphql";
 import { Route, Routes } from "react-router-dom";
 
@@ -31,8 +32,15 @@ export default function Recipes() {
             !error &&
             data?.recipes.map((recipe) => (
               <tr key={recipe.id}>
-              <Title recipe={recipe} />
-              {recipe.createdAt}
+                {/* <td>{recipe.title}</td>
+                <td>{recipe.createdAt}</td> */}
+              <td>
+              <Title recipe={recipe}
+                onClick={() => 
+                  <Recipe recipe={recipe} />                
+                }
+              />
+              </td>
               </tr>
             ))}
         </tbody>
