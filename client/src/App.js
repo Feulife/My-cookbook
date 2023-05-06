@@ -1,4 +1,5 @@
 import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
+import React, { useState } from 'react';
 import Hello from './components/Hello';
 import Titles from './components/Titles'
 // import Recipes from './components/Recipes';
@@ -10,7 +11,14 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 })
 
+
+
 function App() {
+  const [mode, setMode] = useState('light')
+  
+  const handleClick = () => {
+    setMode(mode === 'light' ? 'dark' : 'light')
+  }
   return (
     <ApolloProvider client={client}>
       <BrowserRouter>
@@ -28,6 +36,20 @@ function App() {
             <Route path="/create" element={<CreateRecipe />} />
           </Routes>
         </div>
+        <div
+      style={{
+        background: mode === 'light' ? '#eee' : '#222',
+        color: mode === 'light' ? '#222' : '#eee',
+        display: 'grid',
+        placeItems: 'center',
+        minWidth: '320px',
+        minHeight: '320px',
+        borderRadius: '4px'
+      }}
+    >
+      <p>Chosing theme: {mode}.</p>
+      <button onClick={handleClick}>Change apperience theme</button>
+    </div>
       </BrowserRouter>
     </ApolloProvider>
   );
