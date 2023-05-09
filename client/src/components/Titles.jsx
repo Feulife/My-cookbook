@@ -1,7 +1,9 @@
 import { useQuery } from "@apollo/client";
+import React, { useEffect, useState } from "react";
 import Title from "./Title";
 import Recipe from "./Recipe";
 import { TITLES_QUERY } from "../graphql";
+import MyModal from "./ModalWindow/MyModal";
 import { Route, Routes } from "react-router-dom";
 
 export default function Recipes() {
@@ -10,6 +12,8 @@ export default function Recipes() {
   if (error) {
     console.error("TITLES_QUERY error", error);
   }
+
+  const [modal, setModal] = useState(false);
 
   return (
     <div>
@@ -34,13 +38,18 @@ export default function Recipes() {
               <tr key={recipe.id}>
                 {/* <td>{recipe.title}</td>
                 <td>{recipe.createdAt}</td> */}
-              <td>
-              <Title recipe={recipe}
-                onClick={() => 
-                  <Recipe recipe={recipe} />                
-                }
-              />
-              </td>
+                <td>
+                  <Title
+                    recipe={recipe}
+                    onClick={() => {
+                      setModal(true);
+                    }}
+                  />
+                </td>
+              (setModal ? <MyModal visible={modal} setVisible={setModal}>
+              <Recipe key={recipe.id} recipe={recipe} />
+            </MyModal>)
+
               </tr>
             ))}
         </tbody>
