@@ -1,17 +1,319 @@
 html {
-  background-image: url("./Images/bg.png");
+  --toggle: hsl(230deg 17% 85%);
+  --bggradient: none; /* url('./asets/images/bg.png'); */
+  --bgcolor: none;
+  --colorPrimery: #000;
+  --filterHeading: #000;
+  --selectBg: #fff;
+  --selectText: #000;
+}
+
+html[data-theme=dark] {
+  --toggle: linear-gradient(90deg, hsl(216deg 52% 48%), hsl(51deg 100% 60%));
+  --bggradient: none;
+  --bgcolor: #16171f;
+  --coloPrimary: #fff;
+  --filterHeading: #707384;
+  --selectBg: #16171f;
+  --selectText: #707384;
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: linear-gradient(
+    to right,
+    #f2f3e3 19%,
+    #e9e8db 100%
+  );
+  transition: background 1s ease;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.app_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 3rem 1rem;
+}
+
+.app_navbar {
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  width: -webkit-fill-available;
+  width: -moz-available;
+  margin: 2vh;
+}
+
+.nav-link {
+  color: green;
+  text-decoration: double;
+}
+
+.recipe_logo {
+  margin-top: 10px;
+  width: 15vw;
+  -webkit-filter: drop-shadow(5px 0px 0px
+  rgba(0, 0, 0, 0.6));
+  filter: drop-shadow(5px 0px 0px
+  rgba(0, 0, 0, 0.6));
+}
+
+.gif_container {
+  text-align: center;
+}
+
+.recipee_logos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin-left: 10px; */
+}
+
+.app_footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 14px;
+}
+
+.app_footer> :nth-child(1) {
+  margin-top: 20px;
+}
+.app_footer> :nth-child(2) {
+  margin-bottom: 20px;
+}
+
+.github_icon, .app_footer {
+  color: var(--colorPrimery);
+}
+
+.filter_items>div, label {
+  color: var(--filterHeading);
+}
+
+.github_icon:hover {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+select {
+  color: var(--selectText);
+  background-color: var(--selectBg);
+}
+
+.switch {
+  display: flex;
+  align-items: center;
+}
+
+.switch .label {
+  flex: 1;
+  line-height: 30px;
+}
+
+.switch .toggle {
+  position: relative;
+}
+
+.switch .toggle label {
+  position: absolute;
+  display: inline-block;
+  width: 65px;
+  height: 30px;
+  z-index: 1;
+  border-radius: inherit;
+  cursor: pointer;
+}
+
+.switch .toggle input {
+  display: none;
+}
+
+.switch .toggle-bg {
+  margin-left: auto;
+  width: 65px;
+  height: 30px;
+  border-radius: 30px;
+  background: var(--toggle);
+}
+
+.switch .toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 3px;
+}
+
+.switch .toggle-thumb i {
+  color: var(--textPri);
+  font-size: 1.1rem;
+  padding: 0.25rem;
+  border-radius: 50%;
+  background: var(--mainBg);
+  box-shadow: inset 0 0 7px var(--cardBg);
+}
+
+.switch .toggle-thumb .fa-sun {
+  opacity: 0;
+  z-index: 1;
+  transform: translateX(1px);
+  transition: all 0.5s;
+}
+
+.switch .toggle-thumb .fa-moon {
+  opacity: 1;
+  transform: translateX(-30px);
+  transition: all 0.55s;
+}
+
+.switch .toggle input[type="checkbox"]:checked ~ .toggle-thumb .fa-sun {
+  opacity: 1;
+  z-index: -1;
+  transform: translateX(34px);
+}
+
+.switch .toggle input[type="checkbox"]:checked ~ .toggle-thumb .fa-moon {
+  opacity: 0;
+  transform: translateX(4px);
+}
+
+@media screen and (max-width: 767px) {
+  .loading_gif {
+    width: 35%;
+  }
+  .recipe_logo {
+    width: 35vw;
+  }
+  .filter_container {
+    display: flex;
+    flex-direction: column;
+    width: 100w;
+    align-items: center;
+    margin: 7vh 0 5vh 0;
+    gap: 2vh 2vw;
+    justify-content: center;
+  }
+  select, .filter_items>input{
+    width: 40vw;
+  }
+}
+
+.recipe_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.all_container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.thumb_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 0.2rem;
+  margin: 0.3rem;
+  border: 1px solid #efefef;
+  border-radius: 2rem;
+  min-width: 160px;
+  text-align: center;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.089);
+  background-color: #f5ee93;
+}
+
+h3 {
+  margin-bottom: 0.2rem;
+}
+
+.thumb_container img {
+  width: 120px;
+  height: 120px;
+}
+
+.thumb_container small {
+  text-transform: capitalize;
+}
+
+.detail_wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.detail_wrapper button {
+  color: rgb(22, 22, 22);
+  padding: 0.5rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.185);
+}
+
+.load_10 {
+  background-color: #76daff;
+  background-image: linear-gradient(
+    315deg, #76daff 0%, #fcd000 74%);
+  border-radius: 6px;
+  border: 1px solid #c6c6c6;
+  color: #444;
+  padding: 0.5rem 1.5rem;
+  min-width: 5%;
+  margin-top: 1rem;
+  font-family: "Satisfy", cursive;
+}
+
+button:hover {
+  background-color: #ff0000;
+  background-image: linear-gradient(
+    315deg, #ff0000 0%, #ffed00 74%);
+}
+
+.recipeinfo {
+  margin: 0 25px;
+  font-family: "Satisfy", cursive;
+  background-image: aquamarine;
+  /* background-image: linear-gradient(
+    180deg, #2af598 0%, #009efd 100%); */
+}
+
+.recipeinfo:hover {
+  background-image: linear-gradient(
+    -20deg,
+    #ddd6f3 0%,
+    #faaca8 100%,
+    #faaca8 100%
+  );
 }

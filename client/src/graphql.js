@@ -18,6 +18,8 @@ export const TITLES_QUERY = gql`
     recipes {
       id
       title
+      ingredient
+      content
       createdAt
     }
   }

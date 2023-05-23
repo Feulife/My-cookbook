@@ -1,8 +1,9 @@
 import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import AppRouter from './components/AppRouter';
+import Footer from "./components/Footer/Footer.jsx"
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000',
@@ -19,7 +20,8 @@ function App() {
     <ApolloProvider client={client}>
       <BrowserRouter>
       <Navbar />
-      <AppRouter />    
+      <AppRouter />
+      <Footer /> 
         {/* <div
       style={{
         background: mode === 'light' ? '#eee' : '#222',

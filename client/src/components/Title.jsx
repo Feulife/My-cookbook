@@ -1,12 +1,11 @@
-import Recipe from "./Recipe";
+import React from "react";
+import Recipe from "./Recipe.jsx";
+
 export default function Title({ recipe }) {
+
   return (
-    <tr>
-        <a href="#" onClick={() =>
-          <Recipe recipe={recipe} key={recipe.id} />
-        }>{recipe.title}</a>
-        <td>{recipe.createdAt}</td>
-      
-    </tr>
+    <div className="detail_wrapper">
+      <Recipe key={recipe.id} recipe={recipe.title} />
+    </div>
   );
 }
