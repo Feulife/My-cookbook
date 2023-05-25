@@ -23,3 +23,20 @@ export const GET_RECIPE = gql`
     }
   }
 `;
+
+  export const GET_TITLE = gql`
+  query Recipe($id: ID) {
+    recipe(id: $id) {
+      title
+    }
+  }
+  `;
+
+export const GET_INGREDIENT = gql`
+query Recipe($id: ID) {
+  recipe(id: $id) {
+    ingredient
+  }
+}
+`;
+

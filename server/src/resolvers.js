@@ -3,6 +3,8 @@ import { Recipe } from "./models/Recipe.js";
 export const resolvers = {
   Query: {
     recipes: async () => await Recipe.find({}),
+    getRecipeTitle: async (title) => await Recipe.find(recipe => recipe.id == title),
+    getRecipeIngredient: async (ingredient) => await Recipe.find(recipe => recipe.ingredient == ingredient),
   },
   Mutation: {
     create: async (_, { title, ingredient, content, createdAt }) => {

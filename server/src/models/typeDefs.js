@@ -3,6 +3,8 @@ import gql from "graphql-tag";
 export const typeDefs = gql`
   type Query {
     recipes: [Recipe]
+    getRecipeTitle: [Recipe]
+    getRecipeIngredient: [Recipe]
   }
   type Recipe {
     id: ID
@@ -11,6 +13,7 @@ export const typeDefs = gql`
     content: String
     createdAt: String
     updatedAt: String
+    like: Boolean
   }
   type Mutation {
     create(

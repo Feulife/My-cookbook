@@ -3,6 +3,8 @@ import { Recipe } from "../models/recipe.js";
 export const resolvers = {
   Query: {
     recipes: async () => await Recipe.find({}),
+    getRecipeTitle: async (title) => await Recipe.find(recipe => recipe.id == title),
+    getRecipeIngredient: async (ingredient) => await Recipe.find(recipe => recipe.ingredient == ingredient),
   },
   Mutation: {
     createRecipe: async (_, { title, ingredient, content, createdAt }) => {
@@ -40,13 +42,3 @@ export const resolvers = {
     },
   },
 };
-
-// import Query from './query.js'
-// import Mutation from './mutation.js'
-import { DateTimeScalar } from "graphql-date-scalars";
-
-// export const resolvers = {
-//   Query,
-//   Mutation,
-//   // DateTime: DateTimeScalar
-// }

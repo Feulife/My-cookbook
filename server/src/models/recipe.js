@@ -6,4 +6,5 @@ export const Recipe = mongoose.model("Recipe", {
   content: String,
   createdAt: String,
   updatedAt: String,
+  like: Boolean,
 });

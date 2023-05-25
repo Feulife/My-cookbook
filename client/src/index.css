@@ -8,7 +8,7 @@ html {
   --selectText: #000;
 }
 
-html[data-theme=dark] {
+html[data-theme="dark"] {
   --toggle: linear-gradient(90deg, hsl(216deg 52% 48%), hsl(51deg 100% 60%));
   --bggradient: none;
   --bgcolor: #16171f;
@@ -20,20 +20,23 @@ html[data-theme=dark] {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: linear-gradient(
-    to right,
-    #f2f3e3 19%,
-    #e9e8db 100%
-  );
+  background-image: linear-gradient(to right, #f2f3e3 19%, #e9e8db 100%);
   transition: background 1s ease;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", "Satisfy",
     monospace;
+}
+
+.controls {
+  min-height: 10px;
+  padding: 1.5rem 0;
 }
 
 .app_container {
@@ -41,12 +44,12 @@ code {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  min-height: calc(100vh - 134px);
   padding: 3rem 1rem;
 }
 
 .app_navbar {
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: space-between;
   width: -webkit-fill-available;
@@ -58,14 +61,39 @@ code {
   color: green;
   text-decoration: double;
 }
+ 
+h1 {
+  font-size: 7vw;
+  font-family: "Satisfy", cursive;
+  background: linear-gradient(
+    to right,
+    #eea2a2 0%,
+    #bbc1bf 19%,
+    #57c6e1 42%,
+    #b49fda 79%,
+    #7ac5d8 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  animation: wave 2000ms ease alternate infinite;
+  transition: all 0.4s ease;
+  /* color: transparent; */
+  @keyframes wave {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 50vw 10px;
+    }
+  }
+}
 
 .recipe_logo {
   margin-top: 10px;
   width: 15vw;
-  -webkit-filter: drop-shadow(5px 0px 0px
-  rgba(0, 0, 0, 0.6));
-  filter: drop-shadow(5px 0px 0px
-  rgba(0, 0, 0, 0.6));
+  -webkit-filter: drop-shadow(5px 0px 0px rgba(0, 0, 0, 0.6));
+  filter: drop-shadow(5px 0px 0px rgba(0, 0, 0, 0.6));
 }
 
 .gif_container {
@@ -90,18 +118,20 @@ code {
   font-size: 14px;
 }
 
-.app_footer> :nth-child(1) {
+.app_footer > :nth-child(1) {
   margin-top: 20px;
 }
-.app_footer> :nth-child(2) {
+.app_footer > :nth-child(2) {
   margin-bottom: 20px;
 }
 
-.github_icon, .app_footer {
+.github_icon,
+.app_footer {
   color: var(--colorPrimery);
 }
 
-.filter_items>div, label {
+.filter_items > div,
+label {
   color: var(--filterHeading);
 }
 
@@ -219,16 +249,17 @@ select {
     gap: 2vh 2vw;
     justify-content: center;
   }
-  select, .filter_items>input{
+  select,
+  .filter_items > input {
     width: 40vw;
   }
 }
 
 .recipe_container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 1rem;
+  gap: 1rem;
 }
 
 .all_container {
@@ -284,8 +315,7 @@ h3 {
 
 .load_10 {
   background-color: #76daff;
-  background-image: linear-gradient(
-    315deg, #76daff 0%, #fcd000 74%);
+  background-image: linear-gradient(315deg, #76daff 0%, #fcd000 74%);
   border-radius: 6px;
   border: 1px solid #c6c6c6;
   color: #444;
@@ -297,8 +327,7 @@ h3 {
 
 button:hover {
   background-color: #ff0000;
-  background-image: linear-gradient(
-    315deg, #ff0000 0%, #ffed00 74%);
+  background-image: linear-gradient(315deg, #ff0000 0%, #ffed00 74%);
 }
 
 .recipeinfo {
