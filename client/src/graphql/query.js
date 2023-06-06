@@ -25,15 +25,20 @@ export const GET_RECIPE = gql`
 `;
 
   export const GET_TITLE = gql`
-  query Recipe($id: ID) {
-    recipe(id: $id) {
+  query Query($query: title) {
+    getRecipeTitle(title: $query) {
+      id
       title
+      ingredient
+      content
+      createdAt
+      updatedAt
     }
   }
   `;
 
 export const GET_INGREDIENT = gql`
-query Recipe($id: ID) {
+query Query($id: ID) {
   recipe(id: $id) {
     ingredient
   }

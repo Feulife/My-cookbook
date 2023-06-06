@@ -1,35 +1,29 @@
 import Recipe from '../models/recipe.js'
 
 const mutation = {
-  createRecipe: async (_, { title, ingredient, content, createdAt }) => {
-    const newRecipe = new Recipe({title, ingredient, content, createdAt})
-      await newRecipe.save()
-      return newRecipe
+  create: async (_, { title, ingredient, content, createdAt }) => {
+    const newRecipe = new Recipe({ title, ingredient, content, createdAt });
+    await newRecipe.save();
+    return newRecipe;
   },
 
-  deleteRecipe: async (_, { id }) => {
-    const result = await Recipe.deleteOne({_id: id})
+  delete: async (_, { id }) => {
+    const result = await Recipe.deleteOne({ _id: id });
     if (result.acknowledged && result.deletedCount == 1) {
-      return id
+      return id;
     }
-    return null
+    return null;
   },
-
-  editRecipe: async (_, { id, title, ingredient, content, updetedAt}) => {
-    const result = await Recipe.updateOne(    
-      {
-        _id: id
-      },
-      {
-        $set: {
-          title, ingredient, content, updetedAt
-        }
-      }  
-    )
+  
+  edit: async (_, { id, title, ingredient, content, updatedAt }) => {
+    const result = await Recipe.updateOne(
+      { _id: id },
+      { $set: { title, ingredient, content, updatedAt } }
+    );
     if (result.acknowledged && result.modifiedCount == 1) {
-      return await Recipe.findOne({_id: id})
+      return await Recipe.findOne({ _id: id });
     }
-    return null
+    return null;
   }
 }
 

@@ -34,6 +34,9 @@ const Navbar = () => {
           <Link to="/create" className="nav-link mr-2">
             <b>CREATE RECIPE</b>
           </Link>
+          <Link to="/search" className="nav-link mr-2">
+            <b>SEARCH</b>
+          </Link>
         </div>
         <div className="switch">
           <div className="toggle">

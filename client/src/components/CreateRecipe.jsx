@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { RECIPES_QUERY, CREATE_RECIPE_MUTATION } from '../graphql';
+import { GET_RECIPES } from '../graphql/query';
+import { CREATE_RECIPE_MUTATION } from '../graphql/mutation';
 const showDate = new Date().toLocaleDateString();
 
 export default function CreateRecipe() {
@@ -10,7 +11,7 @@ export default function CreateRecipe() {
     const [createdAt, setCreatedAt] = useState('');
     const [createMutation] = useMutation(CREATE_RECIPE_MUTATION, {
         refetchQueries: [
-            {query: RECIPES_QUERY},
+            {query: GET_RECIPES},
         ]
     });
 

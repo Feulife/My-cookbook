@@ -3,9 +3,12 @@ import gql from "graphql-tag";
 export const typeDefs = gql`
   type Query {
     recipes: [Recipe]
-    getRecipeTitle: [Recipe]
-    getRecipeIngredient: [Recipe]
+    getRecipeTitle(
+    title: String
+    ): [Recipe]
+    getRecipeIngredient(ingredient: String): [Recipe]
   }
+
   type Recipe {
     id: ID
     title: String
@@ -15,6 +18,7 @@ export const typeDefs = gql`
     updatedAt: String
     like: Boolean
   }
+
   type Mutation {
     create(
       title: String
@@ -22,7 +26,9 @@ export const typeDefs = gql`
       content: String
       createdAt: String
     ): Recipe
+
     delete(id: ID): ID
+    
     edit(
       id: ID
       title: String

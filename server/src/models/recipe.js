@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-export const Recipe = mongoose.model("Recipe", {
+const Recipe = mongoose.model("Recipe", {
   title: String,
   ingredient: String,
   content: String,
@@ -8,3 +8,5 @@ export const Recipe = mongoose.model("Recipe", {
   updatedAt: String,
   like: Boolean,
 });
+
+export default Recipe;

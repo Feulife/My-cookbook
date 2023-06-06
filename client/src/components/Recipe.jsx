@@ -1,15 +1,12 @@
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
-import {
-  DELETE_RECIPE_MUTATION,
-  RECIPES_QUERY,
-  EDIT_RECIPE_MUTATION,
-} from "../graphql";
+import { DELETE_RECIPE_MUTATION, EDIT_RECIPE_MUTATION } from "../graphql/mutation";
+import {GET_RECIPES} from '../graphql/query'
 import Description from "./Description";
 
 export default function Recipe({ recipe }) {
   const [deleteRecipeMutation] = useMutation(DELETE_RECIPE_MUTATION, {
-    refetchQueries: [{ query: RECIPES_QUERY }],
+    refetchQueries: [{ query: GET_RECIPES }],
   });
 
   const deleteRecipe = () => {
@@ -25,7 +22,7 @@ export default function Recipe({ recipe }) {
   const [ingredient, setIngredient] = useState(recipe.ingredient);
   const [content, setContent] = useState(recipe.content);
   const [editRecipeMutation] = useMutation(EDIT_RECIPE_MUTATION, {
-    refetchQueries: [{ query: RECIPES_QUERY }],
+    refetchQueries: [{ query: GET_RECIPES }],
   });
   const [show, setShow] = useState(false);
 
