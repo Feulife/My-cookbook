@@ -2,11 +2,10 @@ import gql from "graphql-tag";
 
 export const typeDefs = gql`
   type Query {
+    title(title: String): [Recipe]
+
     recipes: [Recipe]
-    getRecipeTitle(
-    title: String
-    ): [Recipe]
-    getRecipeIngredient(ingredient: String): [Recipe]
+    # getRecipeIngredient(ingredient: String): Recipe
   }
 
   type Recipe {
@@ -28,7 +27,7 @@ export const typeDefs = gql`
     ): Recipe
 
     delete(id: ID): ID
-    
+
     edit(
       id: ID
       title: String

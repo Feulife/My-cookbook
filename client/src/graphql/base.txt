@@ -1,0 +1,117 @@
+
+_id
+6429c393ff2871d60b9e35dd
+title
+"Cheescacke"
+ingredient
+"chees, sugar, flour"
+content
+"STEP 1 Position an oven shelf in the middle of the oven. Heat the oven…"
+createdAt
+""
+__v
+0
+
+_id
+642b19213cdbde4392d6244a
+title
+"Borsch"
+ingredient
+"beef, pork, salo (lard), beetroots, cabbage, carrots, celeriac, onions…"
+content
+"Heat the butter or oil over medium flame in a large pot. Add the onion…"
+createdAt
+""
+__v
+0
+
+_id
+64465dff55c33df855d9ff0e
+title
+"Juice"
+ingredient
+"Apple"
+content
+"Mix apple"
+createdAt
+""
+__v
+0
+
+_id
+64465eb955c33df855d9ff12
+title
+"Juice 2"
+ingredient
+"Blackbarry"
+content
+"Mix blackbarry"
+createdAt
+"24.04.2023"
+__v
+0
+
+_id
+6458c041f35a63f27be31e13
+title
+"Bisquit"
+ingredient
+"sugar, butter, vanil, eggs, flour"
+content
+"Butter mix with sugar and eggs. after add the flour. Cooking in owe ab…"
+createdAt
+"08.05.2023"
+__v
+0
+
+_id
+646a7bc6fec9f839c5fd95b7
+title
+"Popcorn"
+ingredient
+"corn, sugar"
+content
+"Mix corn with sugar and cook it on 180 C."
+createdAt
+"21.05.2023"
+__v
+0
+
+_id
+646c7486267242dddac691be
+title
+"Gamburger"
+ingredient
+"meat, onion, bread, salat"
+content
+"Put on the braed other ingredients and eat it."
+createdAt
+"23.05.2023"
+__v
+0
+
+_id
+646dce81329526fcde9c0958
+title
+"Sweets"
+ingredient
+"Sugar, lemon juice."
+content
+"Make sugar hotest, Add lemon juice, mix ingredients. A few minutes lat…"
+createdAt
+"24.05.2023"
+__v
+0
+
+_id
+6482d97e19a3faf61e41056c
+title
+"Free"
+ingredient
+"Ziemiaki, olej, sol"
+content
+"deep-fry ziemiaki with olej"
+createdAt
+"09.06.2023"
+__v
+0

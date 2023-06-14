@@ -1,39 +1,30 @@
 import React, { useState } from "react";
 import Recipe from "./Recipe";
-import { GET_RECIPES } from "../graphql/query";
 import { GET_TITLE } from "../graphql/query";
 // import { GET_INGREDIENT } from "../graphql/query";
-import { useQuery } from "@apollo/client";
+import { useLazyQuery } from "@apollo/client";
 
-const Search = () => {
+const Search = ({ title }) => {
   const [searchTitle, setSearchTitle] = useState("");
-  const { data, loading, error } = useQuery(GET_TITLE);
-  const [saerchByTitle] = useQuery(GET_TITLE, {
-    refetchQueries: [{ query: GET_TITLE }],
-  });
-  const findTitle = () => {
-    saerchByTitle({
-      variables: {
-        titile: searchTitle,
-      },
-    });
-  };
+  const [getByTitle, { data, loading, error }] = useLazyQuery(GET_TITLE)
+ 
+  if (error) {
+    console.error('GET_TITLE', error)
+    return <div>Error (check console logs)</div>
+  }
 
   return (
     <>
       <div>
         Search by title...
-        <input type="string" onChange={(e) => setSearchTitle(e.target.value)} />
-        <button onClick={findTitle}>OK</button>
+        <input type="text" onChange={(e) => setSearchTitle(e.target.value)} />
+        <button onClick={() => getByTitle({ variables: { title: `${searchTitle}` }})}>OK</button>
       </div>
       <div className="all_container">
-        {loading && <></>}
-        {error && <h3>Loading...</h3>}
+        {loading && <>Loading...</>}            
         {!loading &&
-          !error &&
-          data?.recipes.map((recipe) => (
-            <Recipe key={recipe.title} recipe={recipe} />
-          ))}
+        !error &&
+        data?.title.map(recipe => <Recipe key={recipe.id} recipe={recipe} />)}
       </div>
     </>
   );

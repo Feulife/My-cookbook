@@ -1,14 +1,17 @@
 import Recipe from "../models/recipe.js";
 
 const query = {
-  recipes: async () => await Recipe.find({}),
-
-  getRecipeTitle: async (_, {args}) => {
-  const result = await Recipe.filter((result) => {result.title === args.title})  
+  title: async (_, args) => {
+    console.log(args.title);
+    const result = await Recipe.find({ title: `${args.title}` });
+    console.log(result);
+    return result;
   },
 
-  getRecipeIngredient: async (ingredient) =>
-    await Recipe.find((recipe) => recipe.ingredient == ingredient),
+  recipes: async () => await Recipe.find({}),
 };
+
+// getRecipeIngredient: async (ingredient) =>
+//   await Recipe.find((recipe) => recipe.ingredient == ingredient),
 
 export default query;
