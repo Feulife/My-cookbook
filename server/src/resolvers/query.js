@@ -9,9 +9,14 @@ const query = {
   },
 
   recipes: async () => await Recipe.find({}),
+
+  ingredient: async (_, args) => {
+  console.log(args.ingredient);
+    const result = await Recipe.find({ ingredient: `${args.ingredient}`});
+    console.log('ingradient', result);
+    return result;
+  }
 };
 
-// getRecipeIngredient: async (ingredient) =>
-//   await Recipe.find((recipe) => recipe.ingredient == ingredient),
 
 export default query;

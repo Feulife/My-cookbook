@@ -52,17 +52,17 @@ export default function Recipe({ recipe }) {
         <input
           type="text"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={(e) => setTitle(e.target.value.toUpperCase())}
           className="form-control"
         />
       ) : (
-        <h3>{recipe.title}</h3>
+        <h3 className="titleinfo">{recipe.title}</h3>
       )}
       {isEditing ? (
         <input
           type="text"
           value={ingredient}
-          onChange={(e) => setIngredient(e.target.value)}
+          onChange={(e) => setIngredient(e.target.value.toLowerCase())}
           className="form-control"
         />
       ) : (

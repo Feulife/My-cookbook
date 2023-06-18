@@ -3,9 +3,9 @@ import gql from "graphql-tag";
 export const typeDefs = gql`
   type Query {
     title(title: String): [Recipe]
+    ingredient(ingredient: String): [Recipe]
 
     recipes: [Recipe]
-    # getRecipeIngredient(ingredient: String): Recipe
   }
 
   type Recipe {
