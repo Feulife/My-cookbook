@@ -26,14 +26,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: linear-gradient(to right,
-  #fafaf8 0%,
-  #efead0 42%,
+  #f4f1e4 0%,
+  #f0f0c4 42%,
   #e5e2a5 79%,
   #fcf4a3 100%
    );
   transition: background 1s ease;
 }
-
+#eeeebf
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", "Satisfy",
     monospace;

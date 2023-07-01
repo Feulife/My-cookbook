@@ -7,22 +7,22 @@ import { useLazyQuery } from "@apollo/client";
 const Search = () => {
   const [searchValue, setSearchValue] = useState("");
   const [searchByTitle, setSearchByTitle] = useState(true);
-  const [getSearchBy, { data, loading, error }] =
-    useLazyQuery(GET_TITLE);
-  const [
-    getSearchByIngredient,
-    { dataIngredient, loadingIngredient, errorIngredient },
-  ] = useLazyQuery(GET_INGREDIENT);
+  const [getFromGraphQl, setGetFromGraphQl] = useState(
+    searchByTitle ? GET_TITLE : GET_INGREDIENT
+  );
+  const [getSearchBy, { data, loading, error }] = useLazyQuery(getFromGraphQl);
 
   const handleClickTitle = () => {
     if (!searchByTitle) {
       setSearchByTitle(true);
+      setGetFromGraphQl(GET_TITLE);
     }
   };
 
   const handleClickIngredient = () => {
     if (searchByTitle) {
       setSearchByTitle(false);
+      setGetFromGraphQl(GET_INGREDIENT);
     }
   };
 
@@ -45,7 +45,7 @@ const Search = () => {
     <>
       <div className="search">
         <div className="search_change">
-        Search by...
+          Search by...
           <button
             className={searchByTitle ? "btn_change onClick" : "btn_change"}
             onClick={handleClickTitle}
@@ -74,39 +74,27 @@ const Search = () => {
       <div className="all_container">
         {console.log(searchByTitle)}
         {searchByTitle ? (
-          <>{loading && <>Loading...</>}
-          {console.log(loading, data)}
-          {searchByTitle &&
-            !loading &&
-            !error &&
-            data?.title.map((recipe) => (
-              <Recipe key={recipe.id} recipe={recipe} />
-            ))}
-        </>) : (
-          <>{loadingIngredient && <>Loading...</>}
-          {!searchByTitle &&
-            !loadingIngredient &&
-            !errorIngredient &&
-            dataIngredient?.ingredient.map((recipe) => (
-              <Recipe key={recipe.id} recipe={recipe} />
-            ))}
-        </>)
-        }
-        {/* {searchByTitle && loadingTitle && <>Loading...</>}
-        {searchByTitle &&
-          !loadingTitle &&
-          !errorTitle &&
-          dataTitle?.title.map((recipe) => (
-            <Recipe key={recipe.id} recipe={recipe} />
-          ))}
-
-        {!searchByTitle && loadingIngredient && <>Loading...</>}
-        {!searchByTitle &&
-          !loadingIngredient &&
-          !errorIngredient &&
-          dataIngredient?.ingredient.map((recipe) => (
-            <Recipe key={recipe.id} recipe={recipe} />
-          ))} */}
+          <>
+            {loading && <>Loading...</>}
+            {console.log(loading, data)}
+            {searchByTitle &&
+              !loading &&
+              !error &&
+              data?.title.map((recipe) => (
+                <Recipe key={recipe.id} recipe={recipe} />
+              ))}
+          </>
+        ) : (
+          <>
+            {loading && <>Loading...</>}
+            {!searchByTitle &&
+              !loading &&
+              !error &&
+              data?.ingredient.map((recipe) => (
+                <Recipe key={recipe.id} recipe={recipe} />
+              ))}
+          </>
+        )}        
       </div>
     </>
   );
