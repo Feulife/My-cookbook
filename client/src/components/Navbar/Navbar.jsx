@@ -36,7 +36,7 @@ const Navbar = () => {
             <Link to="/search" className="nav-link mr-2">
               <b>SEARCH</b>
             </Link>
-          </div>          
+          </div>
           <div className="switch">
             <div className="toggle">
               <label htmlFor="themeSwitch"></label>

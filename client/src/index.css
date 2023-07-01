@@ -46,10 +46,10 @@ code {
 
 .app_container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  min-height: auto;
   padding: 3rem 1rem;
 }
 
@@ -119,11 +119,13 @@ h1 {
   justify-content: center;
   gap: 15px;
   text-align: center;
-  font-size: 14px;
+  font-size: 14px;  
 }
 
 .app_footer > :nth-child(1) {
   margin-top: 20px;
+  color: green;
+  text-decoration: double;
 }
 .app_footer > :nth-child(2) {
   margin-bottom: 20px;
@@ -275,6 +277,7 @@ select {
 
 .thumb_container {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -357,18 +360,19 @@ button:hover {
 
 .search {
   display: flex;
-  align-items: normal;
+  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
   width: -webkit-fill-available;
   width: -moz-available;
-  margin: 2vh;
+  /* margin: 1vh; */
   font-family: "Satisfy", cursive;  
 }
 
 .search_change {
   /* height: 100vh; */
   justify-content: center;
-  align-items: normal;
+  align-items: center;
 }
 
 .btn_change {

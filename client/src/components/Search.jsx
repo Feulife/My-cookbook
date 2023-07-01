@@ -6,34 +6,24 @@ import { useLazyQuery } from "@apollo/client";
 
 const Search = () => {
   const [searchValue, setSearchValue] = useState("");
-  const [searchByTitle, setSearchByTitle] = useState(true);
-  const [getFromGraphQl, setGetFromGraphQl] = useState(
-    searchByTitle ? GET_TITLE : GET_INGREDIENT
-  );
+  const [searchByTitle, setSearchByTitle] = useState(Boolean);
+  const [getFromGraphQl, setGetFromGraphQl] = useState(GET_TITLE);
   const [getSearchBy, { data, loading, error }] = useLazyQuery(getFromGraphQl);
 
   const handleClickTitle = () => {
-    if (!searchByTitle) {
-      setSearchByTitle(true);
-      setGetFromGraphQl(GET_TITLE);
-    }
+    setSearchByTitle(true);
+    setGetFromGraphQl(GET_TITLE);
+    getSearchBy({
+      variables: { title: `${searchValue.toUpperCase()}` },
+    });
   };
 
   const handleClickIngredient = () => {
-    if (searchByTitle) {
-      setSearchByTitle(false);
-      setGetFromGraphQl(GET_INGREDIENT);
-    }
-  };
-
-  const searchQueryChange = () => {
-    searchByTitle
-      ? getSearchBy({
-          variables: { title: `${searchValue.toUpperCase()}` },
-        })
-      : getSearchBy({
-          variables: { ingredient: `${searchValue.toLowerCase()}` },
-        });
+    setSearchByTitle(false);
+    setGetFromGraphQl(GET_INGREDIENT);
+    getSearchBy({
+      variables: { ingredient: `${searchValue.toLowerCase()}` },
+    });
   };
 
   if (error) {
@@ -44,31 +34,19 @@ const Search = () => {
   return (
     <>
       <div className="search">
-        <div className="search_change">
-          Search by...
-          <button
-            className={searchByTitle ? "btn_change onClick" : "btn_change"}
-            onClick={handleClickTitle}
-          >
-            title
-          </button>
-          <button
-            className={!searchByTitle ? "btn_change onClick" : "btn_change"}
-            onClick={handleClickIngredient}
-          >
-            ingredient
-          </button>
-        </div>
+        <div className="search_change">Search</div>
         <input type="text" onChange={(e) => setSearchValue(e.target.value)} />
         <button
-          className="btn btn-info mr-2"
-          onClick={() =>
-            searchByTitle
-              ? searchQueryChange("title")
-              : searchQueryChange("ingredient")
-          }
+          className={searchByTitle ? "btn_change onClick" : "btn_change"}
+          onClick={handleClickTitle}
         >
-          OK
+          by title
+        </button>
+        <button
+          className={!searchByTitle ? "btn_change onClick" : "btn_change"}
+          onClick={handleClickIngredient}
+        >
+          by ingredient
         </button>
       </div>
       <div className="all_container">
@@ -94,7 +72,7 @@ const Search = () => {
                 <Recipe key={recipe.id} recipe={recipe} />
               ))}
           </>
-        )}        
+        )}
       </div>
     </>
   );
