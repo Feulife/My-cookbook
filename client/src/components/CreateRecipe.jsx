@@ -50,7 +50,7 @@ export default function CreateRecipe() {
           name="year"
           className="form-control"
           value={ingredient}
-          onChange={(e) => setIngredient(e.target.value)}
+          onChange={(e) => setIngredient(e.target.value.toLowerCase())}
         />
       </div>
       <div className="form-group">

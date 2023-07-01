@@ -7,7 +7,7 @@ import { useLazyQuery } from "@apollo/client";
 const Search = () => {
   const [searchValue, setSearchValue] = useState("");
   const [searchByTitle, setSearchByTitle] = useState(true);
-  const [getSearchByTitle, { dataTitle, loadingTitle, errorTitle }] =
+  const [getSearchBy, { data, loading, error }] =
     useLazyQuery(GET_TITLE);
   const [
     getSearchByIngredient,
@@ -28,40 +28,35 @@ const Search = () => {
 
   const searchQueryChange = () => {
     searchByTitle
-      ? getSearchByTitle({
+      ? getSearchBy({
           variables: { title: `${searchValue.toUpperCase()}` },
         })
-      : getSearchByIngredient({
+      : getSearchBy({
           variables: { ingredient: `${searchValue.toLowerCase()}` },
         });
   };
 
-  if (errorTitle) {
-    console.error(errorTitle);
+  if (error) {
+    console.error(error);
     return <div>Error (check console logs)</div>;
-  } else {
-    if (errorIngredient) {
-      console.error(errorIngredient);
-      return <div>Error (check console logs)</div>;
-    }
   }
 
   return (
     <>
       <div className="search">
-        Search
         <div className="search_change">
+        Search by...
           <button
             className={searchByTitle ? "btn_change onClick" : "btn_change"}
             onClick={handleClickTitle}
           >
-            by title
+            title
           </button>
           <button
             className={!searchByTitle ? "btn_change onClick" : "btn_change"}
             onClick={handleClickIngredient}
           >
-            by ingredient
+            ingredient
           </button>
         </div>
         <input type="text" onChange={(e) => setSearchValue(e.target.value)} />
@@ -72,13 +67,32 @@ const Search = () => {
               ? searchQueryChange("title")
               : searchQueryChange("ingredient")
           }
-          // onClick={() => getBySearch({ variables: { title: `${searchTitle}` } })}
         >
           OK
         </button>
       </div>
       <div className="all_container">
-        {searchByTitle && loadingTitle && <>Loading...</>}
+        {console.log(searchByTitle)}
+        {searchByTitle ? (
+          <>{loading && <>Loading...</>}
+          {console.log(loading, data)}
+          {searchByTitle &&
+            !loading &&
+            !error &&
+            data?.title.map((recipe) => (
+              <Recipe key={recipe.id} recipe={recipe} />
+            ))}
+        </>) : (
+          <>{loadingIngredient && <>Loading...</>}
+          {!searchByTitle &&
+            !loadingIngredient &&
+            !errorIngredient &&
+            dataIngredient?.ingredient.map((recipe) => (
+              <Recipe key={recipe.id} recipe={recipe} />
+            ))}
+        </>)
+        }
+        {/* {searchByTitle && loadingTitle && <>Loading...</>}
         {searchByTitle &&
           !loadingTitle &&
           !errorTitle &&
@@ -92,7 +106,7 @@ const Search = () => {
           !errorIngredient &&
           dataIngredient?.ingredient.map((recipe) => (
             <Recipe key={recipe.id} recipe={recipe} />
-          ))}
+          ))} */}
       </div>
     </>
   );

@@ -4,7 +4,6 @@ export const typeDefs = gql`
   type Query {
     title(title: String): [Recipe]
     ingredient(ingredient: String): [Recipe]
-
     recipes: [Recipe]
   }
 

@@ -12,12 +12,6 @@ const query = {
 
   ingredient: async (_, args) => {
   console.log(args.ingredient);
-  // const result = await Recipe.find({ ingredient: `${args.ingredient}`});
-  // const result = await Recipe.find({ ingredient: { $all: [`${args.ingredient}`]}});
-  // const allIngr = await Recipe.find({});
-  // const ingr = allIngr.ingredient.slice(', ');
-  // console.log(ingr);
-  // Recipe.createIndex({ ingredient: "text" });
   const result = await Recipe.find({ $text: {$search: `${args.ingredient}`}});
     console.log(result);
     return result;

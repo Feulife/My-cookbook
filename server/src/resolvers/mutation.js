@@ -2,17 +2,8 @@ import Recipe from '../models/recipe.js'
 
 const mutation = {
   create: async (_, { title, ingredient, content, createdAt }) => {
-    console.log(ingredient);    
     const newRecipe = new Recipe({ title, ingredient, content, createdAt });
-    // const arrayOfIngredient = [];
-    // const makeArray = (ingr) => ingr.slice(', ').map(i => arrayOfIngredient.push(i))
-    const arrayOfIngredient = ingredient.split(', ');
-    console.log(arrayOfIngredient);
-    // await makeArray(ingredient);
-    // const newRecipe = new Recipe({ title, $push: {ingredient: arrayOfIngredient}, content, createdAt });
-    // await newRecipe.save().updateOne({$push: {ingredient: ingredient}});
     await newRecipe.save();
-    // await newRecipe.updateOne({$push: {ingredient: arrayOfIngredient}})
     return newRecipe;
   },
 

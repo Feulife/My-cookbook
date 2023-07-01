@@ -1,17 +1,5 @@
 import mongoose from "mongoose";
 
-// const Recipe = mongoose.model("Recipe", {
-//   title: String,
-//   ingredient: String,
-//   content: String,
-//   createdAt: String,
-//   updatedAt: String,
-//   like: Boolean,
-// });
-
-// Recipe.createIndex( {ingredient: "text"});
-// export default Recipe;
-
 const RecipeScema = mongoose.Schema( {
     title: String,
     ingredient: String,
@@ -21,6 +9,6 @@ const RecipeScema = mongoose.Schema( {
     like: Boolean,
   });
   
-  RecipeScema.index( {ingredient: "text"});
+  RecipeScema.index( {title: "taxt"}, {ingredient: "text"});
   const Recipe = mongoose.model('Recipe', RecipeScema)
   export default Recipe;
