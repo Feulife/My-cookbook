@@ -1,11 +1,6 @@
 import React from "react";
-import GitHub from "@mui/icons-material/GitHub";
 
 const Footer = () => {
-  const openGitHub = () => {
-    window.open("https://github.com");
-  };
-
   return (
     <>
       <div className="app_footer noselect">
@@ -43,9 +38,6 @@ const Footer = () => {
             Apollo GraphOS
           </a>
           .
-        </div>
-        <div onClick={openGitHub} className="github_icon">
-          <GitHub></GitHub>
         </div>
       </div>
     </>

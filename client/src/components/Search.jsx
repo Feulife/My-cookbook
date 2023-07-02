@@ -33,17 +33,18 @@ const Search = () => {
 
   return (
     <>
-      <div className="search">
-        <div className="search_change">Search</div>
-        <input type="text" onChange={(e) => setSearchValue(e.target.value)} />
+      {/* <div className="search"> */}
+      <div className="container-searchbar">        
+        <input type="text" className="search-input"
+          placeholder="Search..." onChange={(e) => setSearchValue(e.target.value)} />
         <button
-          className={searchByTitle ? "btn_change onClick" : "btn_change"}
+          className= "btn_change"
           onClick={handleClickTitle}
         >
           by title
         </button>
         <button
-          className={!searchByTitle ? "btn_change onClick" : "btn_change"}
+          className="btn_change"
           onClick={handleClickIngredient}
         >
           by ingredient
