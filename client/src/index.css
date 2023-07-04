@@ -26,10 +26,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: linear-gradient(to right,
-  #f4f1e4 0%,
-  #f0f0c4 42%,
-  #e5e2a5 79%,
-  #fcf4a3 100%
+  #fcf4a3 0%,
+  #e5e2a5 42%,
+  #f0f0c4 79%,
+  #f4f1e4 100%
    );
   transition: background 1s ease;
 }
@@ -145,6 +145,7 @@ a {
 }
 
 h3 {
+  align-items: center;
   margin-bottom: 0.2rem;
 }
 

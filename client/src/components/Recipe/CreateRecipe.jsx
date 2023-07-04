@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { GET_RECIPES } from "../graphql/query";
-import { CREATE_RECIPE_MUTATION } from "../graphql/mutation";
+import { GET_RECIPES } from "../../graphql/query";
+import { CREATE_RECIPE_MUTATION } from "../../graphql/mutation";
 const showDate = new Date().toLocaleDateString();
 
 export default function CreateRecipe() {

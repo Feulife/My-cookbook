@@ -1,9 +1,9 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Hello from './Hello/Hello';
-import Titles from './Titles.jsx'
-import CreateRecipe from './CreateRecipe.jsx';
-import Search from './Search'
+import Titles from './Recipe/Titles'
+import CreateRecipe from './Recipe/CreateRecipe';
+import Search from './Search/Search'
 
 const AppRouter = () => {
   return (

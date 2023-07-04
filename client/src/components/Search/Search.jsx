@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Recipe from "./Recipe";
-import { GET_TITLE } from "../graphql/query";
-import { GET_INGREDIENT } from "../graphql/query";
+import Recipe from "../Recipe/Recipe";
+import { GET_TITLE } from "../../graphql/query";
+import { GET_INGREDIENT } from "../../graphql/query";
 import { useLazyQuery } from "@apollo/client";
 
 const Search = () => {
