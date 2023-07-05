@@ -9,6 +9,6 @@ const RecipeScema = mongoose.Schema( {
     like: Boolean,
   });
   
-  RecipeScema.index( {title: "taxt"}, {ingredient: "text"});
+  RecipeScema.index( {title: "text"}, {ingredient: "text"});
   const Recipe = mongoose.model('Recipe', RecipeScema)
   export default Recipe;

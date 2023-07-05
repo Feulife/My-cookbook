@@ -76,8 +76,7 @@ export default function Recipe({ recipe }) {
               <h3 className="titleinfo">{recipe.title}</h3>
               {isEditing ? (
                 <input
-                id="input3"
-                class="form-outline w-75"
+                class="form-outline w-100"
                   type="text"
                   value={title}
                   onChange={(e) => setTitle(e.target.value.toUpperCase())}
@@ -88,9 +87,8 @@ export default function Recipe({ recipe }) {
               )}
               {isEditing ? (
                 <input
-                id="input3"
                   type="text"
-                  class="form-outline w-75"
+                  class="form-outline w-100"
                   value={ingredient}
                   onChange={(e) => setIngredient(e.target.value.toLowerCase())}
                 />
@@ -104,8 +102,7 @@ export default function Recipe({ recipe }) {
               )}
               {isEditing ? (
                 <input
-                id="input3"
-                class="form-outline w-75"
+                class="form-outline w-100"
                   type="text"
                   value={content}
                   onChange={(e) => setContent(e.target.value)}

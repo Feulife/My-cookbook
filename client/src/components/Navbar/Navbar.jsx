@@ -6,7 +6,7 @@ const Navbar = () => {
   const [isChecked, setIsChecked] = useState(false);
 
   const openGitHub = () => {
-    window.open("https://github.com");
+    window.open("https://github.com/Feulife");
   };
 
   return (
