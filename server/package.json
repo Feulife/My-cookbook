@@ -1,4 +1,12 @@
 {
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "type": "module",
   "dependencies": {
     "@apollo/server": "^4.5.0",
     "body-parser": "^1.20.2",
@@ -14,8 +22,4 @@
     "@babel/core": "^7.21.3",
     "@babel/node": "^7.20.7"
   },
-  "scripts": {
-    "start": "nodemon src/index.js"
-  },
-  "type": "module"
 }
