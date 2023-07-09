@@ -6,7 +6,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config({ path: '../.env'})
 const Db = process.env.ATLAS_URI;
-const PORT = 4321;
+const PORT = process.env.PORT;
 
 const db = await mongoose.connect(`${Db}`);
 console.info(db ? 'Connected to CookBook DataBase' : 'Not connected toCookBook DataBase' );
