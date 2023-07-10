@@ -18,6 +18,7 @@ const db = await mongoose.connect(`${Db}`);
 console.info(db ? 'Connected to CookBook DataBase' : 'Not connected toCookBook DataBase' );
 
 const app = express();
+app.use(cors());
 const httpServer = http.createServer(app);
 const server = new ApolloServer({
   typeDefs,
