@@ -6,7 +6,7 @@ import AppRouter from './components/AppRouter';
 import Footer from "./components/Footer/Footer.jsx"
 
 const client = new ApolloClient({
-  // uri: 'http://localhost:4321',
+  // uri: 'http://localhost:5000',
   uri: 'https://my-cookbook-server.vercel.app/',
   cache: new InMemoryCache(),
 })
