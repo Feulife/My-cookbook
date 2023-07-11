@@ -38,8 +38,19 @@ const PORT = process.env.PORT;
 
 const app = express();
 
-const db = mongoose.connect(`${Db}`);
-console.log(db ? 'Connected to CookBook DataBase' : 'Not connected toCookBook DataBase' );
+// const db = mongoose.connect(`${Db}`);
+// console.log(db ? 'Connected to CookBook DataBase' : 'Not connected toCookBook DataBase' );
+
+mongoose.connect(Db, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => {
+  console.log('Db connected');
+})
+.catch(err => {
+  console.log(err.message);
+});
 
 app.use(cors());
 
