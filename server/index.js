@@ -27,16 +27,17 @@ import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHt
 import express from 'express';
 import http from 'http';
 import bodyParser from 'body-parser';
-import {typeDefs} from './models/typeDefs.js';
-import {resolvers} from './resolvers/resolvers.js';
+import {typeDefs} from './models/typeDefs';
+import {resolvers} from './resolvers/resolvers';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
-dotenv.config({ path: '../.env'})
+
+const app = express();
+dotenv.config({ path: '../.env'});
 const Db = process.env.ATLAS_URI;
 // const PORT = process.env.PORT;
 
-const app = express();
 
 // const db = mongoose.connect(`${Db}`);
 // console.log(db ? 'Connected to CookBook DataBase' : 'Not connected toCookBook DataBase' );
