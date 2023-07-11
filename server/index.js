@@ -30,7 +30,7 @@ await server.start();
 
 app.use(
   cors({
-    origin: ['*', 'https://my-cookbook-one.vercel.app/', 'https://my-cookbook-server-1ux59kkwk-feulife.vercel.app', 'https://my-cookbook-server.vercel.app/']    
+    origin: ['*', 'https://my-cookbook-one.vercel.app/', 'https://vercel.live/link/my-cookbook-server-qtiisk4t6-feulife.vercel.app?via=deployment-domains-list-commit', 'https://my-cookbook-server-1ux59kkwk-feulife.vercel.app', 'https://my-cookbook-server.vercel.app/', 'https://vercel.com/feulife/my-cookbook-one/58yqWdyNyjfAQQzDywV1Tzw7cSJL']    
   }),
   json(),
   expressMiddleware(server)
