@@ -54,7 +54,6 @@ mongoose.connect(Db, {
 
 app.use(cors());
 
-
 const httpServer = http.createServer(app);
 
 const server = new ApolloServer({
@@ -73,8 +72,7 @@ app.use(
 );
 // await server.start();
 
-
-await new Promise ((resolve) => server.listen({ port: process.env.PORT }, resolve))
-
-console.info(`🚀 Server ready at http://localhost:${PORT}`);
-
+server.listen({ port: process.env.PORT })
+  .then(({url}) => {
+    console.info(`🚀 Server ready at http://localhost:${PORT}`);
+  });
