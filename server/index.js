@@ -73,7 +73,7 @@ app.use(
   expressMiddleware(server)
 );
 
-await new Promise ((resolve) => httpServer.listen({ port: PORT }, resolve))
+await new Promise ((resolve) => httpServer.listen({ port: `${PORT}` }, resolve))
 
 console.info(`🚀 Server ready at http://localhost:${PORT}`);
 
