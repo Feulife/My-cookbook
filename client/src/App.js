@@ -7,7 +7,7 @@ import Footer from "./components/Footer/Footer.jsx"
 
 const client = new ApolloClient({
   // uri: 'http://localhost:5000',
-  uri: 'https://my-cookbook-server.vercel.app/',
+  uri: 'https://cookbook-server-three.vercel.app/',
   cache: new InMemoryCache(),
 })
 
